@@ -21,10 +21,10 @@ const getUser = (req, res, next) => {
 };
 
 const patchProfile = (req, res, next) => {
-  const { name, about } = req.body;
+  const { email, name } = req.body;
   User.findByIdAndUpdate(
     req.user._id,
-    { name, about },
+    { email, name },
     {
       new: true,
       runValidators: true,
@@ -32,7 +32,13 @@ const patchProfile = (req, res, next) => {
   )
     .then((user) => res.send({ data: user }))
     .catch((err) => {
-      if (err.name === 'ValidationError') {
+      if (err.code === 11000) {
+        next(
+          new ConflictError(
+            'При регистрации указан email, который уже существует на сервере',
+          ),
+        );
+      } else if (err.name === 'ValidationError') {
         next(
           new BadRequestError(
             'Переданы некорректные данные в методы, либо id не валиден',
@@ -67,13 +73,13 @@ const createUser = (req, res, next) => {
           if (err.code === 11000) {
             next(
               new ConflictError(
-                'При регистрации указан email, который уже существует на сервере'
+                'При регистрации указан email, который уже существует на сервере',
               ),
             );
           } else if (err.name === 'ValidationError') {
             next(
               new BadRequestError(
-                'Переданы некорректные данные в методы, либо id не валиден'
+                'Переданы некорректные данные в методы, либо id не валиден',
               ),
             );
           } else {

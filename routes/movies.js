@@ -35,7 +35,7 @@ movieRouter.post(
         }
         return value;
       }),
-      movieId: Joi.string().required(),
+      movieId: Joi.number().required(),
     }),
   }),
   postMovie,

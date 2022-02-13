@@ -20,7 +20,7 @@ const postMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,
@@ -34,7 +34,7 @@ const postMovie = (req, res, next) => {
     year,
     description,
     image,
-    trailer,
+    trailerLink,
     nameRU,
     nameEN,
     thumbnail,
@@ -46,8 +46,8 @@ const postMovie = (req, res, next) => {
       if (err.name === 'ValidationError') {
         next(
           new BadRequestError(
-            'Переданы некорректные данные в методы, либо id не валиден'
-          )
+            'Переданы некорректные данные в методы, либо id не валиден',
+          ),
         );
       } else {
         next(err);
