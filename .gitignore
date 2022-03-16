@@ -1,32 +1,17 @@
-# Prerequisites
-*.d
+# Logs
+logs
+*.log
+npm-debug.log*
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+# Dependency directory
+node_modules
 
-# Precompiled Headers
-*.gch
-*.pch
+# Optional npm cache directory
+.npm
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Optional REPL history
+.DS_Store
+.idea
+.vscode
 
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+.env
