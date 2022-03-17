@@ -11,7 +11,7 @@ const logingRouter = require('./loging');
 
 routes.use(requestLogger);
 
-router.use((req, res, next) => {
+routes.use((req, res, next) => {
   const { origin } = req.headers; // Сохраняем источник запроса в переменную origin
   // проверяем, что источник запроса есть среди разрешённых
   if (allowedCors.includes(origin)) {
