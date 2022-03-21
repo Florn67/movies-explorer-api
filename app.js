@@ -9,7 +9,7 @@ const app = express();
 
 const { PORT = 3000 } = process.env;
 
-const whitelist = ['http://localhost:3000', 'http://example2.com']
+const whitelist = ['http://localhost:3000', 'http://http://movies-explorer-frontend.nomoredomains.work/'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -65,7 +65,7 @@ if (NODE_ENV !== 'production') {
 
 //   next();
 // });
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(routes);
 
 app.listen(PORT, () => {
