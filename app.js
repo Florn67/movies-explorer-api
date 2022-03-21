@@ -65,7 +65,7 @@ if (NODE_ENV !== 'production') {
 
 //   next();
 // });
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(routes);
 
 app.listen(PORT, () => {
