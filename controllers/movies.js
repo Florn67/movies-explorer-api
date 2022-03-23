@@ -61,15 +61,11 @@ const deleteMovie = (req, res, next) => {
       throw new NotFoundError('NotFound');
     })
     .then((movie) => {
-       if (movie.owner === req.user._id) {
         Movie.findByIdAndRemove(req.params.movieId)
           .then((user) => res.send({ data: user }))
           .catch((err) => {
             next(err);
           });
-        }else{
-          throw new ForbiddenError('Попытка удалить чужой фильм');
-        }
     })
 
     .catch((err) => {
