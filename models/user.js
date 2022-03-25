@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-
+const uniqueValidator = require('mongoose-unique-validator');
 function validateEmail(email) {
   return validator.isEmail(email);
 }
@@ -24,5 +24,5 @@ const userSchema = new mongoose.Schema({
     maxlength: 30,
   },
 });
-
+userSchema.plugin(uniqueValidator);
 module.exports = mongoose.model('user', userSchema);
