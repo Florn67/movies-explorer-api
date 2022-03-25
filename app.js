@@ -7,7 +7,7 @@ const routes = require('./routes/index');
 const allowedCors = ['localhost:3000'];
 const app = express();
 
-const { PORT = 3001 } = process.env;
+const { PORT = 3000 } = process.env;
 
 const whitelist = ['http://localhost:3000', 'http://movies-explorer-frontend.nomoredomains.work/'];
 const corsOptions = {
